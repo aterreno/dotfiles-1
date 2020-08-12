@@ -2,7 +2,7 @@
 
 For use with BigDevBox Instances
 
-Dotfiles are symlinked to the home directory and [first_login.sh] is executed after the user successfully connects to the instance for the first time.
+Dotfiles are symlinked to the home directory and [first_login.sh](first_login.sh) is executed after the user successfully connects to the instance for the first time.
 
 ## Use
 
@@ -11,7 +11,7 @@ Dotfiles are symlinked to the home directory and [first_login.sh] is executed af
 3. Specify in `~/.bigdevbox/config`
 
   ```toml
-  dotfiles = "git@github.com:pcorliss/bigdevbox_dotfiles.git"
+  dotfiles = "git@github.com:.../bigdevbox_dotfiles.git"
   ```
 
 4. Create BigDevBox and Enjoy
