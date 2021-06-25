@@ -1,1 +1,105 @@
 ## Automatically symlinked to ~/ and sourced
+
+[user]
+	name = Antonio Terreno
+	email = antonio.terreno@gmail.com
+[alias]
+	aliases = !git config --get-regexp alias | sed -re 's/alias\\.(\\S*)\\s(.*)$/\\1 = \\2/g'
+	up = !git pull --rebase --autostash
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	df = diff
+	lg = log --graph --date=relative --pretty=tformat:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%an %ad)%Creset'
+	oops = commit --amend --no-edit
+	who = shortlog -s --
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'  
+	whois = "!sh -c 'git log -i -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+	prettylog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative 
+	review-local = "!git lg @{push}.."
+	reword = commit --amend	
+	uncommit = reset --soft HEAD~1
+	untrack = rm --cache --
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+[core]
+	excludesfile = /Users/antonio/.gitignore
+	editor = code --wait
+	autocrlf = input
+	whitespace = -trailing-space
+[apply]
+	whitespace = nowarn
+[format]
+	pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
+[github]
+	user = aterreno
+[merge]
+	ff = false
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[pull]
+	rebase = true
+[diff]  
+	mnemonicPrefix = true  
+	renames = true  
+	wordRegex = .  
+	submodule = log  
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[fetch]
+	recurseSubmodules = on-demand
+[grep]
+	break = true
+	heading = true
+	lineNumber = true
+	extendedRegexp = true
+[log]  
+	abbrevCommit = true  
+	follow = true  
+	decorate = false
+[mergetool]  
+	keepBackup = false  
+	keepTemporaries = false  
+	writeToTemp = true  
+	prompt = false
+[page]
+	show = diff-so-fancy | less --tabs=4 -RFX
+[pull]
+	rebase = true
+	rebase = preserve  
+[push] 
+	default = upstream  
+	followTags = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+[rerere]
+	autoupdate = true
+	enabled = true
+[status]  
+	submoduleSummary = true 
+	showUntrackedFiles = all
+[color "branch"]  
+	upstream = cyan
+[tag]  
+	sort = version:refname
+[versionsort]
+	prereleaseSuffix = -pre
+	prereleaseSuffix = .pre
+	prereleaseSuffix = -beta
+	prereleaseSuffix = .beta
+	prereleaseSuffix = -rc
+	prereleaseSuffix = .rc
